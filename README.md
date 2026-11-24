@@ -2,8 +2,8 @@
 
 **Asignatura:** Bases de Datos Avanzadas  
 **Autor:** Maykol Alejandro Riveros Navarrete  
-**Entorno de ejecución:** Oracle FreeSQL (Oracle AI Database 26ai), con réplica del esquema HR creada por `sql/00b_preparar_hr_freesql.sql`.  
-**Pensado también para:** Oracle Database 21c XE · SQL Developer · SQL*Plus con el usuario `hr` (en ese caso no hace falta el script 00b).
+**Entorno:** Oracle Database 21c Express Edition (local) · SQL Developer · SQL*Plus · esquema HR en la PDB `XEPDB1`, usuario `hr`.  
+**Alternativa:** en Oracle FreeSQL, ejecutar antes `sql/00b_preparar_hr_freesql.sql` (réplica de HR en el esquema propio).
 
 ## Estructura
 
@@ -28,5 +28,6 @@ Ejecutar los scripts en orden numérico. Los scripts 00–04 y 06 se pueden lanz
 
 - Las tablas del esquema HR no se modifican de forma permanente: las filas de prueba se eliminan en el script 04 y todas las restricciones quedan `ENABLED / VALIDATED`.
 - `DEPARTMENTS2` queda creada como resultado de la actividad. Para eliminarla: `DROP TABLE departments2 PURGE;`
+- En SQL Developer se antepuso `SET SQLFORMAT ansiconsole` a cada script para mostrar los resultados en forma de tabla.
 - En FreeSQL cada ejecución de la hoja de trabajo abre una sesión nueva y confirma lo pendiente al terminar; por eso el script 05 se observó ejecución a ejecución y el script 07 se ejecuta completo en una sola ejecución.
 - Las vistas `V$` del script 08 requieren privilegios de administrador y no están disponibles en FreeSQL (ORA-00942).
